@@ -2,12 +2,8 @@ resource "aws_launch_template" "web_server_as" {
     name = "myproject"
     image_id           = "ami-079c0d2990b4033f4"
     instance_type = "t2.micro"
-    key_name = "new kp"
-    
+    key_name = "new kp"   
 }
-   
-
-
   resource "aws_elb" "web_server_lb"{
      name = "web-server-lb"
      security_groups = [aws_security_group.web_server.id]
@@ -34,6 +30,5 @@ resource "aws_autoscaling_group" "web_server_asg" {
         id      = aws_launch_template.web_server_as.id
         version = "$Latest"
       }
-    
   }
 
